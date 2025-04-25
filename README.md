@@ -32,7 +32,7 @@ CREATE TABLE Producto (
     Cantidad INT,  
     IdProveedor INT,  
     FOREIGN KEY (IdProveedor) REFERENCES Proveedor(IdProveedor)  
-);
+);    
 3️⃣ Ejecutar la aplicación en Visual Studio  
 
 **Este sistema es ideal para pequeñas empresas o almacenes que necesitan un control preciso del inventario.** 
