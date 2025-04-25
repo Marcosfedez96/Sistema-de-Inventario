@@ -11,27 +11,27 @@ Este proyecto permite la gestión de productos y stock en un sistema de inventar
  Gestión de stock y alertas de baja existencia  
  Reportes de inventario y estadísticas  
 
-## Cómo ejecutar el proyecto:  
-1️⃣ Clonar el repositorio  
-2️⃣ Configurar la base de datos en SQL Server  
-  crear una nueva base de datos llamada SistemaDeInventario.
-  Con 2 tablas con este codigo:
+## Cómo ejecutar el proyecto:    
+1️⃣ Clonar el repositorio    
+2️⃣ Configurar la base de datos en SQL Server    
+  crear una nueva base de datos llamada SistemaDeInventario.  
+  Con 2 tablas con este codigo:  
   
- CREATE TABLE Proveedor (
-    IdProveedor INT PRIMARY KEY,
-    NombreProveedor VARCHAR(255),
-    Contacto VARCHAR(50),
-    Email VARCHAR(255)
+ CREATE TABLE Proveedor (  
+    IdProveedor INT PRIMARY KEY,  
+    NombreProveedor VARCHAR(255),  
+    Contacto VARCHAR(50),  
+    Email VARCHAR(255)  
 );
 
-CREATE TABLE Producto (
-    Idproducto INT PRIMARY KEY,
-    Nombre VARCHAR(255),    
-    Categoria VARCHAR(100),
-    Precio DECIMAL(10,2),
-    Cantidad INT,
-    IdProveedor INT,
-    FOREIGN KEY (IdProveedor) REFERENCES Proveedor(IdProveedor)
+CREATE TABLE Producto (  
+    Idproducto INT PRIMARY KEY,  
+    Nombre VARCHAR(255),      
+    Categoria VARCHAR(100),  
+    Precio DECIMAL(10,2),  
+    Cantidad INT,  
+    IdProveedor INT,  
+    FOREIGN KEY (IdProveedor) REFERENCES Proveedor(IdProveedor)  
 );
 3️⃣ Ejecutar la aplicación en Visual Studio  
 
