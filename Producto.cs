@@ -142,6 +142,13 @@ public class Producto
 
     public void ActualizarCantidades(Producto producto)
     {
-
+        DataBaseConnection dataBaseConnection= new DataBaseConnection();
+        dataBaseConnection.AbrirConeccionSql();
+        string query = "UPDATE Productos SET Precio = @precio, Cantidad = @cantidad where Idproducto = @idproductos;";
+        SqlCommand cmd = new SqlCommand(query,dataBaseConnection.GetCliente());
+        cmd.Parameters.AddWithValue("@precio", producto.Precio);
+        cmd.Parameters.AddWithValue("@cantidad", producto.Cantidad);
+        cmd.Parameters.AddWithValue("@idproductos", producto.IdProducto);
+        cmd.ExecuteNonQuery();
     }
 }

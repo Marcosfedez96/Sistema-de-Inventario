@@ -64,6 +64,24 @@ namespace Sistema_de_Inventario
 
         }
 
+        private Producto CrearProducto(Producto producto)
+        {
+            try
+            {
+                producto.IdProveedor = int.Parse(text_id_proveedor.Text);
+                producto.IdProducto = int.Parse(text_id_producto.Text);
+                producto.NombreProducto = text_nombre_producto.Text;
+                producto.Categoria = text_categoria_producto.Text;
+                producto.Precio = decimal.Parse(text_precio_producto.Text);
+                producto.Cantidad = int.Parse(text_cantidad_producto.Text);
+            }catch(Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+           
+
+            return producto;
+        }
+
         private void button_agregar_datos_Click(object sender, RoutedEventArgs e)
         {
           
@@ -71,13 +89,7 @@ namespace Sistema_de_Inventario
             {
 
                 Producto producto = new Producto();
-                //producto.Proveedor = new Proveedor();
-                producto.IdProveedor = int.Parse(text_id_proveedor.Text);
-                producto.IdProducto = int.Parse(text_id_producto.Text);
-                producto.NombreProducto = text_nombre_producto.Text;
-                producto.Categoria = text_categoria_producto.Text;
-                producto.Precio = decimal.Parse(text_precio_producto.Text);
-                producto.Cantidad = int.Parse(text_cantidad_producto.Text);
+                CrearProducto(producto);
                 producto.AgregarProducto();
                 HabilitarCamposProductos("Registrado");
                 FinProcesoProductos();
@@ -91,6 +103,9 @@ namespace Sistema_de_Inventario
 
         private void button_actualizar_datos_Click(object sender, RoutedEventArgs e)
         {
+            Producto producto = new();
+            CrearProducto(producto);
+            producto.ActualizarCantidades(producto);
             HabilitarCamposProductos("Actualizado");
             FinProcesoProductos();
         }
