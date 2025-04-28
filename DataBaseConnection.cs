@@ -8,6 +8,7 @@ using Microsoft.Data.SqlClient;
 using System.Windows;
 using System.IO;
 using System.DirectoryServices;
+using System.Windows.Controls;
 
 namespace Sistema_de_Inventario;
 
@@ -28,6 +29,17 @@ public class DataBaseConnection
 
     }
 
+    public bool VerificarConeccion()
+    {
+        using (SqlCommand cmd = new SqlCommand("SELECT 1", client))
+        {
+            cmd.ExecuteScalar(); 
+        }
+
+        MessageBox.Show("Conexión exitosa y válida!");
+        return true;
+    }
+
     public void AbrirConeccionSql()
     {
         try
@@ -40,7 +52,7 @@ public class DataBaseConnection
             if (client.State == System.Data.ConnectionState.Closed)
             {
                 client.Open();
-                MessageBox.Show("Coneccion Exitosa!");
+               
             }
 
         }

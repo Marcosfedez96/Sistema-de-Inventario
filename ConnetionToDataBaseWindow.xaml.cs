@@ -38,15 +38,27 @@ namespace Sistema_de_Inventario
 
         private void button_Connection_database_Click(object sender, RoutedEventArgs e)
         {
-            DataBaseConnection dataBaseConnection = new DataBaseConnection();
-            dataBaseConnection.dataSourse = text_data_sourse.Text;
-            dataBaseConnection.initialCatalog = text_Initial_Catalog.Text;
-            dataBaseConnection.AbrirConeccionSql();
-            dataBaseConnection.GuardarStringConnection();
-            GestorDeInventario gestorDeInventario = new GestorDeInventario();
-            gestorDeInventario.Show();
-            dataBaseConnection.CerrarConeccionSql();
-            this.Hide();
+            try
+            {
+                DataBaseConnection dataBaseConnection = new DataBaseConnection();
+                dataBaseConnection.dataSourse = text_data_sourse.Text;
+                dataBaseConnection.initialCatalog = text_Initial_Catalog.Text;
+                dataBaseConnection.AbrirConeccionSql();
+                dataBaseConnection.GuardarStringConnection();
+                
+                if (dataBaseConnection.VerificarConeccion()) {
+
+                    GestorDeInventario gestorDeInventario = new GestorDeInventario();
+                    gestorDeInventario.Show();
+                    dataBaseConnection.CerrarConeccionSql();
+                    this.Hide();
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }            
         }
 
        
